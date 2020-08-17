@@ -1,0 +1,31 @@
+﻿@page
+@model ClinicWeb.Pages.Orders.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Prescription ID</th>
+            <th>Office ID</th>
+            <th>Date Arrived</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.Order)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.PrescriptionId</td>
+                <td>@order.OfficeId</td>
+                <td>@order.DateArrived</td>
+                <td>@order.Created</td>
+                <td><a asp-page="/Orders/Update" asp-route-id="@order.OrderId">Update Order</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+﻿@page
+@model ClinicWeb.Pages.Offices.IndexModel
+@{
+    ViewData["Title"] = "Offices";
+}
+
+@using ClinicWeb.Model
+@using ClinicWeb.Security
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@ViewData["Title"]</h3>
+        @if (SessionIsAdmin())
+        {
+            <a asp-page="Create">Create New Office</a>
+        }
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Street Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Postal Code</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var office in Model.Offices)
+                {
+                    <tr>
+                        <td>@office.Address.StreetAddress</td>
+                        <td>@office.Address.City</td>
+                        <td>@office.Address.State</td>
+                        <td>@office.Address.PostalCode</td>
+                        <td>@office.Phone</td>
+                    @if (SessionIsAdmin())
+                    {
+                        <td><a asp-page="./Edit" asp-route-id="@office.OfficeId">Edit</a></td>
+                    }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@functions {
+    bool SessionIsAdmin()
+    {
+        return new AuthService().GetSessionAccount(HttpContext).GetAccessLevel() >= AccessLevel.Admin;
+    }
+}
+

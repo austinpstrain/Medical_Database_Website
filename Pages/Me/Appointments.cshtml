@@ -1,0 +1,53 @@
+﻿@page
+@model AppointmentsModel
+@{
+    ViewData["Title"] = "Appointment History";
+}
+
+@using ClinicWeb.Model
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@(ViewData["Title"])</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Office</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">End Time</th>
+                    <th scope="col">Doctor</th>
+                    <th scope="col">Reasons</th>
+                    <th scope="col">Approved</th>
+                    <th scope="col">Canceled</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (Appointment appointment in Model.Appointments)
+            {
+                <tr class=@(ChooseTableRowClass(appointment))>
+                    <td>@(appointment.OfficeId)</td>
+                    <td>@(appointment.StartTime)</td>
+                    <td>@(appointment.EndTime != null ? appointment.EndTime.ToString() : "N/A")</td>
+                    <td>@(appointment.DoctorId)</td>
+                    <td>@(appointment.Reasons)</td>
+                    <td>@(appointment.Approved ? "Yes" : "No")</td>
+                    <td>@(appointment.Canceled ? "Yes" : "No")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@functions {
+    string ChooseTableRowClass(Appointment appointment)
+    {
+        if (!appointment.Approved)
+            return "table-danger";
+
+        if (appointment.StartTime >= DateTime.Now)
+            return "table-info";
+
+        return "";
+    }
+}

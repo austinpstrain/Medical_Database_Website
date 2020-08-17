@@ -1,0 +1,47 @@
+﻿@page
+@model ClinicWeb.Pages.PatientList.PatientInfoModel
+@{
+    ViewData["Title"] = "PatientInfo";
+}
+
+<h1>Patient List</h1>
+<p>
+    <a asp-page="Create">Create New Patient</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Street Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+            <th>Patient ID</th>
+            <th>Primary Office ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model.Patients)
+        {
+        <tr>
+            <td>@patient.Person.FirstName</td>
+            <td>@patient.Person.LastName</td>
+            <td>@patient.Person.Phone</td>
+            <td>@patient.Person.Address.StreetAddress</td>
+            <td>@patient.Person.Address.City</td>
+            <td>@patient.Person.Address.State</td>
+            <td>@patient.Person.Address.PostalCode</td>
+            <td>@patient.PatientId</td>
+            <td>@patient.PrimaryOfficeId</td>
+            <td><a asp-page="./Edit" asp-route-id="@patient.PatientId">Edit</a></td>
+            <td><a asp-page="/MedicalDiagnosis/Create" asp-route-id="@patient.PatientId">Create Diagnosis</a></td>
+            <td><a asp-page="/MedicalDiagnosis/View" asp-route-id="@patient.PatientId">View Diagnosis</a></td>
+            <td><a asp-page="/Prescriptions/Create" asp-route-id="@patient.PatientId">Create Prescription</a></td>
+            <td><a asp-page="/Prescriptions/View" asp-route-id="@patient.PatientId"> View Prescriptions</a></td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+﻿@page
+@model ClinicWeb.Pages.MedicalTests.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MedicalTest.MedicalTestId" />
+            <div class="form-group">
+                @Html.LabelFor(m => m.MedicalTest.Name, new { @class = "control-label" })
+                @Html.EditorFor(m => m.MedicalTest.Name)
+                @Html.ValidationMessageFor(m => m.MedicalTest.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.MedicalTest.Details, new { @class = "control-label" })
+                @Html.EditorFor(m => m.MedicalTest.Details)
+                @Html.ValidationMessageFor(m => m.MedicalTest.Details)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.MedicalTest.Result, new { @class = "control-label" })
+                @Html.EditorFor(m => m.MedicalTest.Result)
+                @Html.ValidationMessageFor(m => m.MedicalTest.Result)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

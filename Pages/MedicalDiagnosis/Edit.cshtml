@@ -1,0 +1,44 @@
+﻿@page
+@model ClinicWeb.Pages.MedicalDiagnosis.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Diagnosis.DiagnosisId" />
+            <input type="hidden" asp-for="Diagnosis.ConditionId" />
+            <div class="form-group">
+                @Html.LabelFor(m => m.Diagnosis.Condition.ConditionName, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Diagnosis.Condition.ConditionName)
+                @Html.ValidationMessageFor(m => m.Diagnosis.Condition.ConditionName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Diagnosis.Condition.ConditionDescription, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Diagnosis.Condition.ConditionDescription)
+                @Html.ValidationMessageFor(m => m.Diagnosis.Condition.ConditionDescription)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Diagnosis.Details, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Diagnosis.Details)
+                @Html.ValidationMessageFor(m => m.Diagnosis.Details)
+            </div>
+            <div class="form-group">
+                <label>Doctor</label>
+                <select asp-for="Diagnosis.DoctorId">
+                    @foreach (var doctor in Model.Doctor)
+                    {
+                        <option value="@doctor.DoctorId">@doctor.Person.FirstName @doctor.Person.LastName</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(m => m.Diagnosis.DoctorId)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@page
+@model ClinicWeb.Pages.MedicalDiagnosis.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form class="form-horizontal" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Patient.PatientId" />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Condition.ConditionName, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Condition.ConditionName)
+                @Html.ValidationMessageFor(m => m.Condition.ConditionName)
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Condition.ConditionDescription, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Condition.ConditionDescription)
+                @Html.ValidationMessageFor(m => m.Condition.ConditionDescription)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Diagnosis.Details, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Diagnosis.Details)
+                @Html.ValidationMessageFor(m => m.Diagnosis.Details)
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Doctor</label>
+                <select asp-for="Diagnosis.DoctorId">
+                    @foreach (var doctor in Model.Doctor)
+                    {
+                        <option value="@doctor.DoctorId">@doctor.Person.FirstName @doctor.Person.LastName</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(m => m.Diagnosis.DoctorId)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+
+</form>

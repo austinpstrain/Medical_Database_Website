@@ -1,0 +1,71 @@
+﻿@page
+@model ClinicWeb.Pages.Patients.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<h4>Patient</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Patient.PatientId" />
+            <input type="hidden" asp-for="Patient.Person.AddressId" />
+            <input type="hidden" asp-for="Patient.PersonId" />
+            <div class="form-group">
+                @Html.LabelFor(m => m.Patient.Person.FirstName, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Patient.Person.FirstName)
+                @Html.ValidationMessageFor(m => m.Patient.Person.FirstName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Patient.Person.LastName, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Patient.Person.LastName)
+                @Html.ValidationMessageFor(m => m.Patient.Person.LastName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Patient.Person.Dob, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Patient.Person.Dob)
+                @Html.ValidationMessageFor(m => m.Patient.Person.Dob)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Patient.Person.Phone, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Patient.Person.Phone)
+                @Html.ValidationMessageFor(m => m.Patient.Person.Phone)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Patient.Person.Address.StreetAddress, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Patient.Person.Address.StreetAddress)
+                @Html.ValidationMessageFor(m => m.Patient.Person.Address.StreetAddress)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Patient.Person.Address.City, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Patient.Person.Address.City)
+                @Html.ValidationMessageFor(m => m.Patient.Person.Address.City)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Patient.Person.Address.State, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Patient.Person.Address.State)
+                @Html.ValidationMessageFor(m => m.Patient.Person.Address.State)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Patient.Person.Address.PostalCode, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Patient.Person.Address.PostalCode)
+                @Html.ValidationMessageFor(m => m.Patient.Person.Address.PostalCode)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Patient.PrimaryOfficeId, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Patient.PrimaryOfficeId)
+                @Html.ValidationMessageFor(m => m.Patient.PrimaryOfficeId)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./PatientInfo">Back to Patient List</a>
+</div>

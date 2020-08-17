@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+            <title>Set an Appointment</title>
+    </head>
+    <body>
+        background-color="#BEF4FA"
+        <form action=" " method="GET">
+            <fieldset>
+                <legend>Personal Credentials:</legend>
+                <label for="name">Username: </label><input type="text" name="Username" id="name" required autofocus placeholder="Your Username" pattern="[a-zA-Z]{3,}" title=" Please enter more than 3 letters" />
+                <label for="Patient ID">Patient ID: </label><input type="text" name="Patient ID" id="Patient ID" required placeholder="Your Patient ID" pattern="[a-zA-Z]{3,}" title="Please enter a valid Patient ID" />
+                <label for="phone">Phone: </label><input type="tel" name="phone" id="phone" required placeholder="Enter you phone number" pattern="[0-9]{3} [0-9]{3} [0-9]{3}" title=" Please enter your phone number in the format ### ### ###" />
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Appointment Details:</legend>
+                <p>
+                    <label>Officeid</label><input type="number" id="Office ID" value="Office ID" />
+                </p>
+                <p>
+                    <label>Doctorid</label><input type="number" id="Doctor ID" value="Doctor ID" />
+                </p>
+                <input type="date" name="date" min="2019-01-01" />
+
+                <label for="appt">Choose a time for your appointment:</label>
+                <input type="time" id="appt" name="appt"
+                       min="9:00" max="18:00" required>
+                <span class="note">Office hours are 9am to 6pm</span>
+                <p>
+                    <label>Reason</label>
+                    <textarea> Reason = "Reason"
+                  rows = "3"
+                  cols = "50">Place reason for appt</textarea>
+                </p>
+            </fieldset>
+            <br>
+            <fieldset>
+
+                <legend>Status of appointment</legend>
+                <input type="radio" name="approved" value="Approved" />
+                <input type="radio" name="pending" value="Pending" />
+                <input type="radio" name="canceled" value="Canceled" />
+                <br>
+                <input type="checkbox" name="balcony" value="yes" checked />
+                <p>
+                    <label>Reason for Cancellation</label>
+                    <textarea> ReasonforCancellation= "ReasonforCancellation"
+                  rows = "3"
+                  cols = "50">Place reason for cancellation(if applicable)</textarea>
+                </p>
+                <br>
+                <input type="image" src="Shared/schedulebutton.jpg" />
+            </fieldset>
+
+        </form>
+    </body>
+
+
+</html>

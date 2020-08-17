@@ -1,0 +1,31 @@
+﻿@page
+@model ViewModel
+@using ClinicWeb.Model
+@{
+    ViewData["Title"] = "Medical Tests";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@(ViewData["Title"])</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Test Name</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Result</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var test in Model.Tests)
+            {
+                <tr>
+                    <td>@(test.Name)</td>
+                    <td>@(test.Details)</td>
+                    <td>@((test.Result ?? false) ? "Positive" : "Negative")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

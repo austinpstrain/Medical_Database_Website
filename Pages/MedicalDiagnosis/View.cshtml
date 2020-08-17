@@ -1,0 +1,30 @@
+﻿@page
+@model ClinicWeb.Pages.MedicalDiagnosis.ViewModel
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View Diagnosis</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date Created</th>
+            <th>Details</th>
+            <th>Condition Name</th>
+            <th>Condition Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var diagnosis in Model.Diagnosis)
+        {
+        <tr>
+            <td>@diagnosis.Created</td>
+            <td>@diagnosis.Details</td>
+            <td>@diagnosis.Condition.ConditionName</td>
+            <td>@diagnosis.Condition.ConditionDescription</td>
+            <td>@diagnosis.DoctorId</td>
+            <td><a asp-page="/MedicalDiagnosis/Edit" asp-route-id="@diagnosis.DiagnosisId">Edit Diagnosis</a></td>
+        </tr>
+        }
+    </tbody>
+</table>

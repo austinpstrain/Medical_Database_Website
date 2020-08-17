@@ -1,0 +1,30 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+@{ var formInputAttributes = new { htmlAttributes = new { @class = "form-control" } }; }
+@{ var formErrorAttributes = new { @class = "text-danger" }; }
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@(ViewData["Title"])</h3>
+        <form method="POST">
+            <div class="form-group">
+                @(Html.LabelFor(model => model.Username))
+                @(Html.EditorFor(model => model.Username, formInputAttributes))
+                @(Html.ValidationMessageFor(model => model.Username, null, formErrorAttributes))
+            </div>
+            <div class="form-group">
+                @(Html.LabelFor(model => model.Password))
+                @(Html.EditorFor(model => model.Password, formInputAttributes))
+                @(Html.ValidationMessageFor(model => model.Password, null, formErrorAttributes))
+            </div>
+            <a href="/Accounts/Create">Register here</a>
+            <br />
+            <br />
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+</div>

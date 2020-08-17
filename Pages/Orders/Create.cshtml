@@ -1,0 +1,68 @@
+﻿@page
+@model ClinicWeb.Pages.Orders.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form class="form-horizontal" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Prescription.PrescriptionId" />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Prescription.Product, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Prescription.Product, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(m => m.Prescription.Product)
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Prescription.Dosage, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Prescription.Dosage, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(m => m.Prescription.Dosage)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Prescription.Refill, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Prescription.Refill, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(m => m.Prescription.Refill)
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Prescription.Instructions, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Prescription.Instructions, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(m => m.Prescription.Instructions)
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Prescription.DoctorId, new { @class = "control-label" })
+                @Html.EditorFor(m => m.Prescription.DoctorId, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(m => m.Prescription.DoctorId)
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Office</label>
+                <select asp-for="Order.OfficeId">
+                    @foreach (var office in Model.Office)
+                    {
+                        <option value="@office.OfficeId">@office.Address.StreetAddress</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(m => m.Order.OfficeId)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+
+</form>

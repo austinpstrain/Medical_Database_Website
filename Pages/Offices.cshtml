@@ -1,0 +1,18 @@
+﻿@page
+@model OfficesModel
+@{
+    ViewData["Title"] = "Offices";
+}
+<h1>@ViewData["Title"]</h1>
+
+<hr>
+@foreach (var office in Model.Offices)
+{
+    <div>
+        @office.Address.StreetAddress
+        <br />
+        @($"{office.Address.City}, {office.Address.State} {office.Address.PostalCode}")
+    </div>
+    <p>@office.Phone</p>
+    <hr>
+}

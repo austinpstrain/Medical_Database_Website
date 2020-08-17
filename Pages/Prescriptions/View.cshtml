@@ -1,0 +1,33 @@
+﻿@page
+@model ClinicWeb.Pages.Prescriptions.ViewModel
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Dosage</th>
+            <th>Refill</th>
+            <th>Instructions</th>
+            <th>Created</th>
+            <th>Doctor ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rx in Model.Prescription)
+        {
+            <tr>
+                <td>@rx.Product</td>
+                <td>@rx.Dosage</td>
+                <td>@rx.Refill</td>
+                <td>@rx.Instructions</td>
+                <td>@rx.Created</td>
+                <td>@rx.DoctorId</td>
+                <td><a asp-page="/Orders/Create" asp-route-id="@rx.PrescriptionId">Order Prescription</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

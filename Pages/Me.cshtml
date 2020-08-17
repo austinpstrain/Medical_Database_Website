@@ -1,0 +1,19 @@
+﻿@page
+@model MeModel
+@{
+    ViewData["Title"] = "Me";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@(ViewData["Title"])</h3>
+        <div class="list-group">
+            <a href="/Me/Appointments" class="list-group-item list-group-item-action">
+                Appointment History
+            </a>
+            <a href="/Me/Information" class="list-group-item list-group-item-action">
+                Medical Information
+            </a>
+        </div>
+    </div>
+</div>

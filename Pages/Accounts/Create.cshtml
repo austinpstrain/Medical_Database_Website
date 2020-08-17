@@ -1,0 +1,193 @@
+﻿@page
+@model ClinicWeb.Pages.Accounts.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+<h1>Create</h1>
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 20px;
+  background-color:#F5FBFC;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 90%;
+  opacity: 1;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #2c6ca0;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+    <form class="form-horizontal" method="post" style="background: #6a9ef2">
+        <h4>Create Account</h4>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Accounts.Username, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Accounts.Username)
+                    @Html.ValidationMessageFor(m => m.Accounts.Username)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Accounts.Password, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Accounts.Password)
+                    @Html.ValidationMessageFor(m => m.Accounts.Person.LastName)
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.Person.FirstName, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.Person.FirstName)
+                    @Html.ValidationMessageFor(m => m.Patient.Person.FirstName)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.Person.LastName, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.Person.LastName)
+                    @Html.ValidationMessageFor(m => m.Patient.Person.LastName)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.PrimaryOfficeId, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.PrimaryOfficeId)
+                    @Html.ValidationMessageFor(m => m.Patient.PrimaryOfficeId)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.Person.Dob, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.Person.Dob)
+                    @Html.ValidationMessageFor(m => m.Patient.Person.Dob)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.Person.Gender, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.Person.Gender)
+                    @Html.ValidationMessageFor(m => m.Patient.Person.Gender)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.Person.Address.StreetAddress, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.Person.Address.StreetAddress)
+                    @Html.ValidationMessageFor(m => m.Patient.Person.Address.StreetAddress)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.Person.Address.State, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.Person.Address.State)
+                    @Html.ValidationMessageFor(m => m.Patient.Person.Address.State)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.Person.Address.City, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.Person.Address.City)
+                    @Html.ValidationMessageFor(m => m.Patient.Person.Address.City)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.Person.Address.PostalCode, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.Person.Address.PostalCode)
+                    @Html.ValidationMessageFor(m => m.Patient.Person.Address.PostalCode)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Patient.Person.Phone, new { @class = "control-label" })
+                    @Html.EditorFor(m => m.Patient.Person.Phone)
+                    @Html.ValidationMessageFor(m => m.Patient.Person.Phone)
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+
+</body>
+</html>

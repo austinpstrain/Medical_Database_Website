@@ -1,0 +1,61 @@
+﻿@page
+@model ClinicWeb.Pages.Doctors.IndexModel
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+@using ClinicWeb.Security
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@ViewData["Title"]</h3>
+        @if (SessionIsAdmin())
+        {
+            <a asp-page="Create">Create New Doctor</a>
+        }
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Street Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Postal Code</th>
+                    <th>Doctor ID</th>
+                    <th>Specialization ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var doctor in Model.Doctor)
+                {
+                <tr>
+                    <td>@doctor.Person.FirstName</td>
+                    <td>@doctor.Person.LastName</td>
+                    <td>@doctor.Person.Phone</td>
+                    <td>@doctor.Person.Address.StreetAddress</td>
+                    <td>@doctor.Person.Address.City</td>
+                    <td>@doctor.Person.Address.State</td>
+                    <td>@doctor.Person.Address.PostalCode</td>
+                    <td>@doctor.DoctorId</td>
+                    <td>@doctor.SpecializationId</td>
+                    @if (SessionIsAdmin())
+                    {
+                    <td><a asp-page="./Edit" asp-route-id="@doctor.DoctorId">Edit</a></td>
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@functions {
+    bool SessionIsAdmin()
+    {
+        return new AuthService().GetSessionAccount(HttpContext).GetAccessLevel() >= AccessLevel.Admin;
+    }
+}
+
+

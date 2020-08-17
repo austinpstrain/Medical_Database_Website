@@ -1,0 +1,70 @@
+﻿@page
+@model ReportsModel
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<h1>Reports</h1>
+
+<form method="post">
+    <label for="dataset"><b>Dataset</b></label>
+    <select name="dataset">
+        <option value="address">Addresses</option>
+        <option value="patient">Patients</option>
+    </select>
+
+    <label for="count"><b>Count</b></label>
+    <input type="number" name="count" min="0" max="1000" value="5" />
+
+    <input type="submit" value="Generate" />
+</form>
+
+@if (Model.Addresses != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Street Address</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Postal Code</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var addr in Model.Addresses)
+        {
+            <tr>
+                <td>@addr.StreetAddress</td>
+                <td>@addr.State</td>
+                <td>@addr.City</td>
+                <td>@addr.PostalCode</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@if (Model.Patients != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Primary Office</th>
+                <th>Blood Type</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var addr in Model.Patients)
+        {
+            <tr>
+                <td>@addr.Person.FirstName</td>
+                <td>@addr.Person.LastName</td>
+                <td>@addr.PrimaryOfficeId</td>
+                <td>@addr.BloodTypeId</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
